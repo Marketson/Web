@@ -18,6 +18,7 @@
   <script src="https://kit.fontawesome.com/c2f47b06b7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script defer src="app.js"></script>
 </head>
 
 <body>
@@ -67,7 +68,7 @@
                   </div>
                   <br>
                   <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary">Sign In</button>
+                    <button type="button" class="btn btn-primary" onclick="signIn()">Sign In</button>
                   </div>
                 </form>
               </div>
@@ -85,13 +86,13 @@
                 <form class="form-signin">
                   <div class="form-label-group">
                     <label for="inputEmail">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required
+                    <input type="email" id="suemail" class="form-control" placeholder="Email address" required
                       autofocus>
                   </div>
                   <br>
                   <div class="form-label-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <label for="su-password">Password</label>
+                    <input type="password" id="supassword" class="form-control" placeholder="Password" required>
                   </div>
 
                   <div class="custom-control custom-checkbox mb-3">
@@ -101,7 +102,7 @@
                   </div>
                   <br>
                   <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary">Sign Up</button>
+                    <button type="button" class="btn btn-primary" onclick="signUp()">Sign Up</button>
                   </div>
                 </form>
               </div>
