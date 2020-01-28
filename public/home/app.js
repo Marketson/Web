@@ -19,7 +19,9 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 function setName() {
+    var user = firebase.auth().currentUser;
     user.updateProfile({
         displayName: document.getElementById("suusername").value,
-    })
+    });
+    $('#staticBackdrop').modal('hide')
 }
