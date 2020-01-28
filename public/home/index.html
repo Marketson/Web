@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>Welcome to Firebase Hosting</title>
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/7.7.0/firebase-app.js"></script>
@@ -18,9 +18,38 @@
     <script src="https://kit.fontawesome.com/c2f47b06b7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script defer src="app.js"></script>
 </head>
 
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Register</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Tell us a bit about yourself.</p>
+                    <br>
+                    <label for="inputName">What should we call you?</label>
+                    <div class="input-group flex-nowrap">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">@</span>
+                        </div>
+                        <input id="suusername" type="text" class="form-control" placeholder="Username"
+                            aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="setName()">Let's go!</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav>
 
         <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
@@ -39,11 +68,50 @@
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">For you.
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="container">
+                <br>
+                <h1 class="text-center">For you.</h1>
+                <br>
+                <br>
+                <div class="jumbotron">
+                    Text.
+                </div>
+            </div>
         </div>
-        <div class="tab-pane fade" id="nav-wishlist" role="tabpanel" aria-labelledby="nav-wishlist-tab">Wishlist</div>
-        <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">Sell an item.</div>
-        <div class="tab-pane fade" id="nav-settings" role="tabpanel" aria-labelledby="nav-settings-tab">Settings</div>
+        <div class="tab-pane fade" id="nav-wishlist" role="tabpanel" aria-labelledby="nav-wishlist-tab">
+            <div class="container">
+                <br>
+                <h1 class="text-center">Wishlist.</h1>
+                <br>
+                <br>
+                <div class="jumbotron">
+                    Text.
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">
+            <div class="container">
+                <br>
+                <h1 class="text-center">Sell an item.</h1>
+                <br>
+                <br>
+                <div class="jumbotron">
+                    Text.
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-settings" role="tabpanel" aria-labelledby="nav-settings-tab">
+            <div class="container">
+                <br>
+                <h1 class="text-center">Settings.</h1>
+                <br>
+                <br>
+                <div class="jumbotron">
+                    Text.
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
