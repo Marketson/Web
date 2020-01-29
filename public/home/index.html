@@ -10,7 +10,7 @@
     <script defer src="/__/firebase/7.7.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/7.7.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.7.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.7.0/firebase-firestore.js"></script>
     <script defer src="/__/firebase/7.7.0/firebase-messaging.js"></script>
     <script defer src="/__/firebase/7.7.0/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script defer src="app.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 </head>
 
 <body>
@@ -50,8 +51,8 @@
             </div>
         </div>
     </div>
-    <nav>
 
+    <nav class="navbar navbar-expand-md fixed-bottom justify-content-center">
         <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
             <!--Home / For You-->
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
@@ -62,11 +63,15 @@
             <!--Add an item to trade.-->
             <a class="nav-item nav-link" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab"
                 aria-controls="nav-add" aria-selected="false"><i class="fas fa-plus fa-2x"></i></a>
+            <!--Chat-->
+            <a class="nav-item nav-link" id="nav-chat-tab" data-toggle="tab" href="#nav-chat" role="tab"
+                aria-controls="nav-chat" aria-selected="false"><i class="fas fa-comment-alt fa-2x"></i></a>
             <!--Settings / wishlist-->
             <a class="nav-item nav-link" id="nav-settings-tab" data-toggle="tab" href="#nav-settings" role="tab"
                 aria-controls="nav-settings" aria-selected="false"><i class="fas fa-cog fa-2x"></i></a>
         </div>
     </nav>
+
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <div class="container">
@@ -93,7 +98,27 @@
         <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">
             <div class="container">
                 <br>
-                <h1 class="text-center">Sell an item.</h1>
+                <h1 class="text-center">List an item.</h1>
+                <br>
+                <br>
+                <div class="jumbotron">
+                    <h3 class="text-center">Items.</h3>
+                    <hr class="my-3">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action active">
+                            Cras justo odio
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-chat" role="tabpanel" aria-labelledby="nav-chat-tab">
+            <div class="container">
+                <br>
+                <h1 class="text-center">Chat.</h1>
                 <br>
                 <br>
                 <div class="jumbotron">
@@ -107,8 +132,14 @@
                 <h1 class="text-center">Settings.</h1>
                 <br>
                 <br>
-                <div class="jumbotron">
-                    Text.
+                <div class="jumbotron text-center">
+                    <br>
+                    <br>
+                    <hr class="my-5">
+                    <p>Log out with this button.</p>
+                    <button type="button" class="btn btn-outline-danger">😢 Log out.</button>
+                    <hr class="my-5">
+                    <p>Delete profile. 😨</p>
                 </div>
             </div>
         </div>

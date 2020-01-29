@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", event => {
-    //db = firebase.firestore();
+    db = firebase.firestore();
     app = firebase.app();
 })
 
@@ -24,4 +24,15 @@ function setName() {
         displayName: document.getElementById("suusername").value,
     });
     $('#staticBackdrop').modal('hide')
+}
+
+
+function signOut() {
+    firebase.auth().signOut().then(function () {
+        // Sign-out successful.
+    }).catch(function (error) {
+        console.error(error)
+        alert(error)
+    });
+
 }

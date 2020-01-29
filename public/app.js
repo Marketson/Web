@@ -5,7 +5,6 @@ const siemail = document.getElementById("siemail")
 const sipassword = document.getElementById("sipassword")
 
 document.addEventListener("DOMContentLoaded", event => {
-    db = firebase.firestore();
     app = firebase.app();
 })
 
