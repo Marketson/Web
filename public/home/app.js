@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", event => {
     app = firebase.app();
     const listeditems = db.collection("listing")//.where('creator', '==', curuser.uid)
     listeditems.onSnapshot(listing => {
-        document.getElementById("card-container").innerHTML = ""
+        document.getElementById("card-container").innerHTML = "";
         listing.forEach(doc => {
-            var data = doc.data()
-            var col = $('<div class="col-12 col-sm-8 col-md-6 col-lg-2 col-xl-3"></div>');
+            var data = doc.data();
+            var col = $('<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4"></div>');
             //create row of cards
             var panel = $(`<div class="card" style="width: 18rem;" Panel"><div class="card-body text-center"><div class="card-title"><h5>${data.title}</h5><p> ${data.description.slice(0, 100) + '...'}</p><button onclick="viewListingOwn(${JSON.stringify(data.title).replace(/"/g, "&quot;")},${JSON.stringify(data.description).replace(/"/g, "&quot;")})" class="btn btn-primary" role="button">View</button><br></div></div>`);
             panel.appendTo(col);
