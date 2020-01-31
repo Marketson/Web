@@ -1,14 +1,19 @@
+//JSON.stringify(data.title).replace(/"/g, "&quot;")
 document.addEventListener("DOMContentLoaded", event => {
     db = firebase.firestore();
     app = firebase.app();
     const listeditems = db.collection("listing")//.where('creator', '==', curuser.uid)
-    listeditems.get()
-        .then(listing => {
-            listing.forEach(doc => {
-                var data = doc.data()
-                $(`<a onclick="viewListingOwn(${JSON.stringify(data.title).replace(/"/g, "&quot;")}, ${JSON.stringify(data.description).replace(/"/g, "&quot;")})" class="list-group-item list-group-item-action" >${data.title}</a>`).appendTo('#my-listed-items')
-            })
+    listeditems.onSnapshot(listing => {
+        document.getElementById("card-container").innerHTML = ""
+        listing.forEach(doc => {
+            var data = doc.data()
+            var col = $('<div class="col-12 col-sm-8 col-md-6 col-lg-2 col-xl-3"></div>');
+            //create row of cards
+            var panel = $(`<div class="card" style="width: 18rem;" Panel"><div class="card-body text-center"><div class="card-title"><h5>${data.title}</h5><p> ${data.description.slice(0, 100) + '...'}</p><button onclick="viewListingOwn(${JSON.stringify(data.title).replace(/"/g, "&quot;")},${JSON.stringify(data.description).replace(/"/g, "&quot;")})" class="btn btn-primary" role="button">View</button><br></div></div>`);
+            panel.appendTo(col);
+            col.appendTo('#card-container')
         })
+    })
 })
 
 
@@ -46,6 +51,41 @@ function signOut() {
 }
 
 function addListing() {
+    bootbox.dialog({
+        title: "Add a listing",
+        message: $(`
+        <form>
+          <div class="form-group">
+            <label class="col-form-label">Title</label>
+            <input id="addlisting-title" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Description</label>
+            <textarea id="addlisting-des" class="form-control" ></textarea>
+          </div>
+        </form>
+        `),
+        size: 'large',
+        buttons: {
+            cancel: {
+                label: "Close",
+                className: 'btn-secondary',
+            },
+            ok: {
+                label: "Post listing",
+                className: 'btn-primary',
+                callback: function () {
+                    db.collection("listing").doc(document.getElementById("addlisting-title").value).set({
+                        title: document.getElementById("addlisting-title").value,
+                        owner: curuser.uid,
+                        description: document.getElementById("addlisting-des").value,
+                        createdAt: "sad",
+                        createdLoc: "sad"
+                    })
+                }
+            }
+        }
+    });
 
 }
 
