@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", event => {
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        curuser = user
+        window.curuser = user
         console.log(user.displayName)
         if (user.displayName === null) {
             //get user to fill out form
@@ -34,7 +34,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 function setName() {
     var user = firebase.auth().currentUser;
     user.updateProfile({
-        displayName: document.getElementById("suusername").value,
+        displayName: "@" + document.getElementById("suusername").value,
     });
     $('#staticBackdrop').modal('hide')
 }
@@ -90,14 +90,14 @@ function addListing() {
 }
 
 function deleteListing(listing) {
-
+    db.collection("listing").doc(listing).delete().then(function () {
+        console.log("Document successfully deleted!");
+    }).catch(function (error) {
+        console.error("Error removing document: ", error);
+    });
 }
 
 function viewListing() {
-
-}
-
-function viewListingOwn(title = "ERR", description = "ERROR") {
     bootbox.dialog({
         title: title,
         message: $(`<p>${description}</p>`),
@@ -108,9 +108,45 @@ function viewListingOwn(title = "ERR", description = "ERROR") {
                 className: 'btn-secondary',
             },
             ok: {
+                label: "Send Offer",
+                className: 'btn-success',
+                callback: function (result) {
+                    if (result === null) {
+                        // Prompt dismissed
+                    } else {
+                        // result has a value
+                        deleteListing(title)
+                    }
+                }
+            }
+        }
+    });
+}
+
+function viewListingOwn(title, description) {
+    bootbox.dialog({
+        title: title,
+        message: $(`<p>${description}</p>`),
+        size: 'large',
+        buttons: {
+            cancel: {
+                label: "Close",
+                className: 'btn-secondary',
+                callback: function () {
+
+                }
+            },
+            ok: {
                 label: "Delete listing.",
                 className: 'btn-danger',
-                callback: deleteListing()
+                callback: function (result) {
+                    if (result === null) {
+                        // Prompt dismissed
+                    } else {
+                        // result has a value
+                        deleteListing(title)
+                    }
+                }
             }
         }
     });
